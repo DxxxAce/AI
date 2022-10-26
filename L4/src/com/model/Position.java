@@ -6,7 +6,8 @@ public class Position {
 
     public Position() { }
 
-    public Position(int row, int col) {
+    public Position(int row, int col)
+    {
         this.row = row - 1;
         this.col = col - 1;
     }

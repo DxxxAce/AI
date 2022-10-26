@@ -7,18 +7,22 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         Scanner scanner = new Scanner(System.in);
 
         int size;
         Position[] blockedPositions;
 
         try {
+
             System.out.println("Please enter the board size:");
 
-            do {
+            do
+            {
                 size = scanner.nextInt();
             }
+
             while (size < 4);
 
             System.out.println("How many positions would you like to block?");
@@ -32,7 +36,8 @@ public class Main {
             System.out.println("Please enter the blocked positions indices:");
             blockedPositions = new Position[blockedSize];
 
-            for (int i = 0; i < blockedPositions.length; i++) {
+            for (int i = 0; i < blockedPositions.length; i++)
+            {
                 blockedPositions[i] = new Position();
 
                 System.out.println("Row");
@@ -48,7 +53,8 @@ public class Main {
                 while (blockedPositions[i].getCol() < 0 || blockedPositions[i].getCol() > blockedSize);
             }
         }
-        catch (InputMismatchException e) {
+        catch (InputMismatchException e)
+        {
             System.out.println("You have entered an invalid input. Here is a default problem example.");
             size = 4;
 
@@ -60,19 +66,14 @@ public class Main {
 
             System.out.println("Size = " + size);
             System.out.println("Blocked positions:");
-            for (int i = 0; i < blockedPositions.length; i++) {
+            for (int i = 0; i < blockedPositions.length; i++)
+            {
                 System.out.println((i + 1) + ". Row = " + blockedPositions[i].row +
                         ", Column = " + blockedPositions[i].col);
             }
         }
 
         Problem queens = new Problem(size, blockedPositions);
-        if (queens.solve()) {
-            System.out.println("Solution:");
-            queens.printSolution();
-        }
-        else {
-            System.out.println("Problem has no solution.");
-        }
+        queens.printSolution();
     }
 }
